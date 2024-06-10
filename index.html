@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casey's Bachelor Party in Las Vegas 🎰</title>
+    <style>
+        body {
+            background: url('img/las-vegas.jpeg') repeat;
+            color: lime;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: purple;
+            padding: 20px;
+            font-size: 2em;
+            animation: flash 1s infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes flash {
+            0%, 100% { color: yellow; }
+            50% { color: red; }
+        }
+        .content {
+            margin: 0 auto;
+            padding: 20px;
+            border: 3px dashed yellow;
+            background: rgba(116, 202, 211, .7);
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+        .placeholder {
+            width: 100%;
+            height: 200px;
+            border: 5px solid white;
+            background: grey;
+            margin: 20px 0;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .placeholder.first {
+            background: url('img/stadium-swim.jpeg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px #000;
+            height: 300px;
+        }
+        .placeholder.first::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .placeholder.first a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+        }
+        .placeholder.first a:hover {
+            text-decoration: underline;
+        }
+        .schedule {
+            background: url('placeholder.jpg') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+        }
+        .music-player {
+            margin-top: 20px;
+        }
+        marquee {
+            font-size: 1.5em;
+            color: pink;
+            background-color: black;
+        }
+        .rotating-logo {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            animation: rotate 3s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-20deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+
+        /* Mobile Styles */
+        @media (max-width: 600px) {
+            header {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+            .placeholder {
+                height: 150px;
+            }
+            .placeholder.first {
+                height: 200px;
+                font-size: 1.5em;
+            }
+            marquee {
+                font-size: 1.2em;
+            }
+            .schedule {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome to Casey's Bachelor Party in Las Vegas! 🎰
+    </header>
+    <div class="music-player">
+        <audio id="party-audio" controls autoplay>
+            <source src="audio/Welcome To Vegas Royalty Free Music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="rotating-logo">
+        <img src="img/las-vegas-clipart.png" alt="Las Vegas Clipart" style="width: 100%; height: 100%;">
+    </div>
+    <div class="content">
+        <marquee behavior="alternate">Get ready for a wild weekend!</marquee>
+        <div class="placeholder schedule">
+            <!-- Placeholder for the schedule image -->
+        </div>
+        <div class="placeholder first">
+            <a href="https://www.circalasvegas.com/stadium-swim/" target="_blank">Stadium Swim</a>
+        </div>
+        <div class="placeholder">
+            <!-- Placeholder for Casino Chip Image -->
+        </div>
+        <div class="placeholder">
+            <!-- Placeholder for Beer Image -->
+        </div>
+    </div>
+
+    <script>
+        // Attempt to autoplay the audio
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('party-audio');
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    console.log('Audio is playing');
+                }).catch(function(error) {
+                    console.log('Autoplay was prevented:', error);
+                    // Add a user interaction to play the audio if autoplay fails
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
